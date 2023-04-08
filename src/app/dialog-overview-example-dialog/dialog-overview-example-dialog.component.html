@@ -1,0 +1,48 @@
+<div class="content">
+  <h1 mat-dialog-title>User Details:</h1>
+<form >
+  <mat-form-field appearance="fill">
+      <mat-label>User Name</mat-label>
+      <input matInput [formControl]="unameFormControl" [errorStateMatcher]="matcher" required>
+      <mat-error *ngIf="unameFormControl.hasError('required')">
+          Username is <strong>required</strong>
+        </mat-error>
+    </mat-form-field><br />
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+             placeholder="Ex. pat@example.com" required>
+      <mat-hint>Errors appear instantly!</mat-hint>
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field><br />
+
+    <mat-form-field appearance="fill">
+      <mat-label>Phone</mat-label>
+      <input matInput [formControl]="phoneFormControl" [errorStateMatcher]="matcher" required>
+      <mat-error *ngIf="phoneFormControl.hasError('required')">
+          Phone is <strong>required</strong>
+        </mat-error>
+    </mat-form-field><br />
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput [formControl]="pwdFormControl" [errorStateMatcher]="matcher" required>
+        <mat-error type="password" *ngIf="pwdFormControl.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      <mat-error *ngIf="pwdFormControl.hasError('minlength') && !pwdFormControl.hasError('required')">
+          Max lenght <strong>8 char</strong>
+        </mat-error>       
+    </mat-form-field><br /><br />
+  
+    <div mat-dialog-actions>
+      <button type="submit" mat-raised-button color="primary">Submit</button>
+      <button mat-button class="mat-focus-indicator mat-raised-button mat-button-base mat-raised" (click)="onNoClick()">Close!!</button>
+    </div>
+  </form>
+</div>
